@@ -4,7 +4,15 @@ $(document).ready(function() {
 
 	$("#searchButton").click(function(event) {
 		event.preventDefault();
-		var recipe = $("#recipeTextbox").val();
+		var recipeInput = $("#recipeTextbox").val();
+		var recipe = "";
+		for (var i = 0; i < recipeInput.length; i++) {
+			if (recipeInput.charAt(i).match(/\s+/g))
+				recipe += "%20";
+			else
+				recipe += recipeInput.charAt(i);
+		}
+
 		var ingredients = $("#ingredientsTextbox").val();
 		var ingredientList = "";
 		for (var i = 0; i < ingredients.length; i++) {
@@ -13,6 +21,7 @@ $(document).ready(function() {
 			else
 				ingredientList += ingredients.charAt(i);
 		}
+
 		console.log(recipe);
 		console.log(ingredientList);
 
@@ -20,6 +29,7 @@ $(document).ready(function() {
 		if (recipe !== "" && ingredientList !== "") {
 			myUrl =  "http://www.recipepuppy.com/api/?i=" + ingredientList +
 			"&q=" + recipe;
+			
 		}
 		else if (recipe === "" && ingredientList !== "") {
 			myUrl =  "http://www.recipepuppy.com/api/?i=" + ingredientList;
