@@ -31,7 +31,9 @@ $(document).ready(function() {
 		$.ajax({
 			url : myUrl,
 			dataType : "json",
-			crossDomain : true,
+			beforeSend : function(h) {
+				h.setRequestHeader("Access-Control-Allow-Origin", "*");
+			},
 			success : function(json) {
 				console.log(json);
 				results = "";
