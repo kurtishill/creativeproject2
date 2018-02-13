@@ -27,15 +27,15 @@ $(document).ready(function() {
 
 		var myUrl = "";
 		if (recipe !== "" && ingredientList !== "") {
-			myUrl =  "http://www.recipepuppy.com/api/?i=" + ingredientList +
+			myUrl =  "https://www.recipepuppy.com/api/?i=" + ingredientList +
 			"&q=" + recipe;
 			
 		}
 		else if (recipe === "" && ingredientList !== "") {
-			myUrl =  "http://www.recipepuppy.com/api/?i=" + ingredientList;
+			myUrl =  "https://www.recipepuppy.com/api/?i=" + ingredientList;
 		}
 		else if (recipe !== "" && ingredientList === "") {
-			myUrl =  "http://www.recipepuppy.com/api/?q=" + recipe;
+			myUrl =  "https://www.recipepuppy.com/api/?q=" + recipe;
 		}
 
 		$.ajax({
