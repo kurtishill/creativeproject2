@@ -30,8 +30,9 @@ $(document).ready(function() {
 
 		$.ajax({
 			url : myUrl,
-			dataType : "json",
+			dataType : "jsonp",
 			crossDomain : true,
+			headers : 
 			success : function(json) {
 				console.log(json);
 				results = "";
