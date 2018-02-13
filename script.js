@@ -32,7 +32,6 @@ $(document).ready(function() {
 			url : myUrl,
 			dataType : "jsonp",
 			crossDomain : true,
-			headers : 
 			success : function(json) {
 				console.log(json);
 				results = "";
