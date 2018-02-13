@@ -31,6 +31,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : myUrl,
 			dataType : "json",
+			crossDomain : true,
 			success : function(json) {
 				console.log(json);
 				results = "";
