@@ -32,7 +32,11 @@ $(document).ready(function() {
 			url : myUrl,
 			dataType : "json",
 			crossDomain : true,
-			headers : { 'Access-Control-Allow-Origin': '*' },
+			beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    xhr.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+                    xhr.withCredentials = true;
+                },
 			success : function(json) {
 				console.log(json);
 				results = "";
