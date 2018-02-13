@@ -31,7 +31,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : myUrl,
 			dataType : "json",
-			headers : { 'Access-Control-Allow-Origin': '*' }
+			headers : 'Access-Control-Allow-Origin': '*',
 			success : function(json) {
 				console.log(json);
 				results = "";
