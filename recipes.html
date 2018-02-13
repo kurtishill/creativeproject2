@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Creative Project 2</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+
+  <nav class="green lighten-1">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Food Lovers</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active-item" href="recipes.html">Recipes</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active-item" href="recipes.html">Recipes</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Search for recipes!</h1>
+
+	<div class="row">
+      <div class="input-field col s6">
+          <input value="" id="recipeTextbox" type="text" class="validate">
+          <label class="active" for="recipeItem">Enter your desired recipe</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="input-field col s6">
+          <input value="" id="ingredientsTextbox" type="text" class="validate">
+          <label class="active" for="ingredients">Enter any specific ingredients</label>
+      </div>
+  </div>
+
+
+    <button class="btn waves-effect waves-light green lighten-1" id="searchButton" type="submit" name="action">Search
+      <i class="material-icons right">send</i>
+      </button>
+
+    <div class="results"></div>
+
+
+
+
+
+  <footer class="page-footer green lighten-1">
+        <div class="container" class="green lighten-1">
+                <h5 class="white-text"><a target="_blank" href="https://github.com/BYU-CS260-Winter-2018/lab-2-kurtishill"><span class="green-text text-darken-4">GitHub</span></a></h5>
+            </div>
+          <div class="footer-copyright">
+            <div class="container">
+            &copy 2018 Kurtis Hill
+            </div>
+         </div>
+    </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script text="type/javascript" src="/script.js"></script>
+
+  </body>
+</html>

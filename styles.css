@@ -1,0 +1,86 @@
+body {
+	margin: 2%;
+}
+
+button {
+	margin-bottom: 2%;
+}
+
+.results {
+	margin-bottom: 2%;
+}
+
+.brand-logo {
+	margin-left: 2%;
+	font-size: 20px;
+}
+
+.active-item {
+	background-color: #2e7d32;
+}
+
+#home-pic {
+	height: 500px;
+	background: url("images/food.jpg");
+	margin-bottom: 2%;
+	margin: auto;
+}
+
+#home-header {
+	text-align: center;
+	bottom: 10;
+	padding-top: 10%;
+	color: white;
+	font-size: 3em;
+	text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.page-footer {
+	margin-top: 2%;
+}
+
+.input-field.col.s12 {
+	margin: 40px;
+}
+
+@media (min-width: 850px) {
+	.container {
+		display: flex;
+		justify-content: space-around;
+		width: 75%;
+		flex-wrap: wrap; 
+	}
+
+	.cardWidth {
+		width: 40%;
+	}
+
+	.brand-logo {
+		font-size: 1em;
+	}
+
+	#home-header {
+		font-size: 4.5em;
+	}
+
+	#dropdowns {
+		width: 60%;
+	}
+}
+
+@media (max-width: 850px) {
+	.container {
+		display: block;
+		width: 80%;
+	}
+
+	.cardWidth {
+		width: 90%;
+	}
+
+	.brand-logo {
+		font-size: 20px;
+	}
+}
+
+
