@@ -80,6 +80,8 @@ $(document).ready(function() {
 			},
 			error : function() {
 				$(".results").html("<h4>Sorry, no results were found!</h4>");
+				$(".card").addClass("cardWidth");
+				$(".results").addClass("container");
 			}
 		});
 	})
@@ -166,6 +168,8 @@ $(document).ready(function() {
 			},
 			error : function() {
 				$(".results").html("<h4>Sorry, no results were found!</h4>");
+				$(".card").addClass("cardWidth");
+				$(".results").addClass("container");
 			}
 		});
 	})
