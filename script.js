@@ -17,7 +17,7 @@ $(document).ready(function() {
 		var ingredientList = "";
 		for (var i = 0; i < ingredients.length; i++) {
 			if (ingredients.charAt(i).match(/\s+/g))
-				ingredientList += ",";
+				ingredientList += "&allowedIngredient[]=";
 			else
 				ingredientList += ingredients.charAt(i);
 		}
@@ -27,15 +27,13 @@ $(document).ready(function() {
 
 		var myUrl = "";
 		if (recipe !== "" && ingredientList !== "") {
-			myUrl =  "https://www.recipepuppy.com/api/?i=" + ingredientList +
-			"&q=" + recipe;
-			
-		}
-		else if (recipe === "" && ingredientList !== "") {
-			myUrl =  "https://www.recipepuppy.com/api/?i=" + ingredientList;
+			myUrl = "http://api.yummly.com/v1/api/recipes?_app_id=93eb313c&_app_key=2d85f6bc4655cecee00254422792dceb&q=" + recipe
+				+ "&allowedIngredient[]=" + ingredientList + "&requirePictures=true";
+			console.log(myUrl);
 		}
 		else if (recipe !== "" && ingredientList === "") {
-			myUrl =  "https://www.recipepuppy.com/api/?q=" + recipe;
+			myUrl = "http://api.yummly.com/v1/api/recipes?_app_id=93eb313c&_app_key=2d85f6bc4655cecee00254422792dceb&q=" + recipe
+				+ "&requirePictures=true";
 		}
 
 		$.ajax({
@@ -43,47 +41,38 @@ $(document).ready(function() {
 			dataType : "json",
 			crossDomain : true,
 			beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-                    xhr.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
-                    xhr.withCredentials = true;
+                    xhr.setRequestHeader('X-Yummly-App-ID', '93eb313c');
+                    xhr.setRequestHeader('X-Yummly-App-Key', '2d85f6bc4655cecee00254422792dceb');
                 },
 			success : function(json) {
 				console.log(json);
 				results = "";
-				for (var i = 0; i < json.results.length; i++) {
+				for (var i = 0; i < json.matches.length; i++) {
 					results += "<div class=\"card medium light-blue lighten-4\">";
 					results += "<div class=\"card-image waves-effect waves-block waves-light\">";
-					if (json.results[i].thumbnail !== "") {
-						results += "<img class=\"activator\" src=" + json.results[i].thumbnail + ">";
+					if (json.matches[i].smallImageUrls !== null) {
+						results += "<img class=\"activator\" src=" + json.matches[i].smallImageUrls[0] + ">";
 					}
 					else {
 						results += "<img class=\"activator\" src=" + "/images/no_image_available.png" + ">";
 					}
 					results += "</div>";
 					results += "<div class=\"card-content\">";
-					results += "<span class=\"card-title activator grey-text text-darken-4\">" + json.results[i].title + 
+					results += "<span class=\"card-title activator grey-text text-darken-4\">" + json.matches[i].recipeName + 
 						"<i class=\"material-icons right\">more_vert</i></span>";
-					results += "<p><a target=\"_blank\" href=" + json.results[i].href + ">" + "Full Recipe</a></p>";
+					results += "<p>Source: " + json.matches[i].sourceDisplayName + "</p>";
 					results += "</div>";
 					results += "<div class=\"card-reveal\">";
-					results += "<span class=\"card-title grey-text text-darken-4\">" + json.results[i].title + 
+					results += "<span class=\"card-title grey-text text-darken-4\">" + json.matches[i].recipeName + 
 						"<i class=\"material-icons right\">close</i></span>";
 					results += "<ol>";
-					var list = json.results[i].ingredients;
-					var word = "";
+					var list = json.matches[i].ingredients;
 					for (var j = 0; j < list.length; j++) {
-						if (list[j] === ",") {
-							results += "<li>" + word + "</li>";
-							if (j + 1 !== list.length - 1)
-								j++;
-							word = "";
-						}
-						else
-							word += list[j];
+						results += "<li>" + list[j] + "</li>";
 					}
 					results += "</ol></div></div>";
 				}
-				if (json.results.length == 0)
+				if (json.matches.length == 0)
 					results = "<h4>Sorry, no results were found!</h4>";
 				$(".results").html(results);
 				$(".card").addClass("cardWidth");
